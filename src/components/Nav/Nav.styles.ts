@@ -13,16 +13,41 @@ export const LinkList = styled.ul`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+
+	&:nth-child(1) {
+		margin-left: 0;
+	}
 `;
 
 export const LinkListItem = styled.li`
 	list-style: none;
+	transition: all 200ms ease;
+	position: relative;
+
+	&:hover:after {
+		opacity: 1;
+	}
+
+	&:after {
+		content: '';
+		width: 100%;
+		height: 2px;
+		background: darkblue;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		opacity: 0;
+		transition: all 300ms ease-in;
+	}
 `;
 
 export const Link = styled(RouterLink)`
-	color: #eee;
-	border: none;
+	display: block;
+	position: relative;
 	margin-right: 1rem;
 	padding: 1rem;
+
 	background: transparent;
+	color: #eee;
+	text-decoration: none;
 `;
