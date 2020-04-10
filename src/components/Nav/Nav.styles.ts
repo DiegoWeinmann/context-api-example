@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Wrapper = styled.nav`
 	padding: 0;
@@ -18,7 +19,7 @@ export const LinkListItem = styled.li`
 	list-style: none;
 `;
 
-export const Button = styled.button`
+export const Link = styled(RouterLink)`
 	color: #eee;
 	border: none;
 	margin-right: 1rem;

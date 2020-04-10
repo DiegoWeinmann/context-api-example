@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { Wrapper, LinkList, LinkListItem, Button } from './Nav.styles';
+import { Wrapper, LinkList, LinkListItem, Link } from './Nav.styles';
 
 export const Nav: React.FC = () => (
 	<Wrapper>
 		<LinkList>
 			<LinkListItem>
-				<Button>Items</Button>
+				<Link to="/">Items</Link>
 			</LinkListItem>
 			<LinkListItem>
-				<Button>Cart</Button>
+				<Link to="/cart">Cart</Link>
 			</LinkListItem>
 		</LinkList>
 	</Wrapper>
