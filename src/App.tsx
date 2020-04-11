@@ -1,16 +1,32 @@
 import React from 'react';
 import './App.css';
 
+import { ItemsProvider } from './context/items.context';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav';
+import ItemsPage from './pages/ItemsPage';
+import CartPage from './pages/CartPage';
 
 function App() {
 	return (
 		<div>
-			<Router>
-				<Nav />
-				<Switch></Switch>
-			</Router>
+			<ItemsProvider>
+				<Router>
+					<Nav />
+					<Switch>
+						<Route
+							exact
+							path="/"
+							render={(props) => <ItemsPage {...props} />}
+						/>
+						<Route
+							exact
+							path="/cart"
+							render={(props) => <CartPage {...props} />}
+						/>
+					</Switch>
+				</Router>
+			</ItemsProvider>
 		</div>
 	);
 }
