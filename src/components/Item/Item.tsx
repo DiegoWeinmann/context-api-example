@@ -1,8 +1,8 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 
-import { Wrapper } from './Item.styles';
-import { Item as ItemType } from '../../types';
 import { CartContext } from '../../context/items.context';
+import { Item as ItemType } from '../../types';
+import { Wrapper } from './Item.styles';
 
 interface ItemProps {
 	item: ItemType;
@@ -10,20 +10,19 @@ interface ItemProps {
 
 export const Item: React.FC<ItemProps> = React.memo(({ item }) => {
 	const { dispatch } = useContext(CartContext);
-	const handleAddItem = useCallback(() => {
+
+	const handleAddItem = () => {
 		dispatch({
 			type: 'ADD_ITEM',
 			item,
 		});
-	}, [dispatch, item]);
-
-	const { name, description, price } = item;
+	};
 
 	return (
 		<Wrapper>
-			<h3>{name}</h3>
-			<p>{description}</p>
-			<p>${price}</p>
+			<h3>{item.name}</h3>
+			<p>{item.description}</p>
+			<p>${item.price}</p>
 			<button onClick={handleAddItem}>Add</button>
 		</Wrapper>
 	);

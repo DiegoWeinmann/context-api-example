@@ -1,8 +1,8 @@
 import React, { createContext, useState, useReducer } from 'react';
 
-import { Item, Cart } from '../types';
 import { initialItems } from '../data/itemsData';
-import { cartReducer, Action } from '../reducers/cartReducer';
+import { cartReducer, Action, CartReducer } from '../reducers/cartReducer';
+import { Item, Cart } from '../types';
 
 interface ItemsContextState {
 	items: Item[];
@@ -28,7 +28,7 @@ export const CartContext = createContext<CartContextState>({
 export const ItemsProvider: React.FC = ({ children }) => {
 	const [items] = useState<Item[]>(initialItems);
 
-	const [cart, dispatch] = useReducer(cartReducer, {
+	const [cart, dispatch] = useReducer<CartReducer>(cartReducer, {
 		cartItems: [],
 		total: 0,
 	});

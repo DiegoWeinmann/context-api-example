@@ -17,7 +17,9 @@ export type INCREMENT_QTY = {
 
 export type Action = ADD_ITEM_ACTION | DECREMENT_QTY | INCREMENT_QTY;
 
-export const cartReducer = (cart: Cart, action: Action) => {
+export type CartReducer = (cart: Cart, action: Action) => Cart;
+
+export const cartReducer: CartReducer = (cart: Cart, action: Action) => {
 	switch (action.type) {
 		case 'ADD_ITEM':
 			if (cart.cartItems.length === 0) {
