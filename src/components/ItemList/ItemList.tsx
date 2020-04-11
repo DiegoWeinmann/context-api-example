@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { ItemsContext } from '../../context/items.context';
+import React from 'react';
 
 import Item from '../Item';
 import { Item as ItemType } from '../../types';

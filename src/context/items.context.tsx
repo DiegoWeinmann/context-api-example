@@ -1,6 +1,6 @@
-import React, { createContext, useState, useCallback, useReducer } from 'react';
+import React, { createContext, useState, useReducer } from 'react';
 
-import { Item, Cart, CartItem } from '../types';
+import { Item, Cart } from '../types';
 import { initialItems } from '../data/itemsData';
 import { cartReducer, Action } from '../reducers/cartReducer';
 

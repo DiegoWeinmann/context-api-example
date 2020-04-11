@@ -20,15 +20,22 @@ export const CartItem: React.FC<CartItemProps> = ({
 		});
 	};
 
+	const incrementHandler = () => {
+		dispatch({
+			type: 'INCREMENT_QTY',
+			item,
+		});
+	};
+
 	return (
 		<Wrapper>
 			<h3>{item.name}</h3>
 			<div>
 				<button onClick={decrementHandler}>-</button>
 				<p>{quantity}</p>
-				<button>+</button>
+				<button onClick={incrementHandler}>+</button>
 			</div>
-			<p>{totalPrice}</p>
+			<p>${totalPrice.toFixed(2)}</p>
 		</Wrapper>
 	);
 };

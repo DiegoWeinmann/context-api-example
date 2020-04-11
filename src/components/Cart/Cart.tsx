@@ -16,10 +16,10 @@ export const Cart: React.FC = () => {
 
 	return (
 		<Wrapper>
-			<h1>Cart</h1>
+			<h1>Cart Total: ${total.toFixed(2)}</h1>
 			{cartItems.length > 0 &&
 				cartItems.map((cartItem: CartItemType) => {
-					return <CartItem {...cartItem} />;
+					return <CartItem key={cartItem.item.id} {...cartItem} />;
 				})}
 		</Wrapper>
 	);

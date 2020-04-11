@@ -10,7 +10,12 @@ export type DECREMENT_QTY = {
 	id: number;
 };
 
-export type Action = ADD_ITEM_ACTION | DECREMENT_QTY;
+export type INCREMENT_QTY = {
+	type: 'INCREMENT_QTY';
+	item: Item;
+};
+
+export type Action = ADD_ITEM_ACTION | DECREMENT_QTY | INCREMENT_QTY;
 
 export const cartReducer = (cart: Cart, action: Action) => {
 	switch (action.type) {
@@ -45,6 +50,20 @@ export const cartReducer = (cart: Cart, action: Action) => {
 					...cart.cartItems,
 					{ item: action.item, quantity: 1, totalPrice: action.item.price },
 				],
+				total: cart.total + action.item.price,
+			};
+
+		case 'INCREMENT_QTY':
+			return {
+				cartItems: cart.cartItems.map((cartItem) =>
+					cartItem.item.id === action.item.id
+						? {
+								item: cartItem.item,
+								quantity: cartItem.quantity + 1,
+								totalPrice: cartItem.totalPrice + cartItem.item.price,
+						  }
+						: cartItem
+				),
 				total: cart.total + action.item.price,
 			};
 
